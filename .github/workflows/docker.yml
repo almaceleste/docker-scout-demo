@@ -5,15 +5,13 @@ on:
     tags: '[0-9]+.[0-9]+.[0-9]+'
     branches:
       - 'main'
-  pull_request:
-    branches: ["**"]
 
 env:
   # Hostname of your registry
   REGISTRY: docker.io
   # Image repository, without hostname and tag
   IMAGE_NAME: ${{ vars.IMAGE_NAME }}
-  SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
+  SHA: ${{ github.event.after }}
 
 jobs:
   build:
